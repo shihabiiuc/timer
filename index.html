@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30 Minutes Timer</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <section class="countdown-timer-container">
+    <h2><time id="timer">30:00</time></h2>
+    <div class="button-container">
+      <button id="reset-btn" data-tooltip="Need to reset it again? Reload this page.">Reset</button>
+      <button id="ES" onclick="enableSound()" type="button">Enable Sound</button>
+      <button id="DS" class="disabled" onclick="disableSound()" type="button">Disable Sound</button>
+    </div>
+    <audio id="timer-sound" controls autoplay loop>
+      <source src="./files/timer.ogg" type="audio/ogg">
+      <source src="./files/timer.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </section>
+
+
+	<script src="script.js"></script>
+</body>
+</html>
+
+

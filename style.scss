@@ -1,0 +1,135 @@
+.countdown-timer-container {
+  background-color: #ffeeed;
+  border: 1px solid #eb4034;
+  padding: 30px 15px;
+  text-align: center;
+  h2 {
+    font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    margin: 0 0 60px;
+    font-size: 5em;
+    @media(min-width: 768px) {
+      font-size: 10em;
+    }
+    time#timer {
+      color: #249444;
+    }
+    time#timer.time-over {
+      color: red;
+    }
+  }
+  .button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    button {
+      font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+      background-color: #E14D43;
+      border: 1px solid #eb4034;
+      color: white;
+      font-size: 1.25em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 10px 5px;
+      border-radius: 25px;
+      transition: background-color .4s ease-in-out;
+    }
+    button#reset-btn[disabled] {
+      background-color: rgba($color: #E14D43, $alpha: .3);
+      color: rgba($color: #FFFFFF, $alpha: .4);
+      border-color: rgba($color: #eb4034, $alpha: .4);
+      cursor: default;
+    }
+    button#reset-btn[disabled]:hover {
+      background-color: rgba($color: #E14D43, $alpha: .3);
+    }
+    button#reset-btn:hover {
+      background-color: #910d04;
+    }
+    button#ES {
+      background-color: #7AD03A;
+      border-color: #249444;
+      &:hover {
+        background-color: #249444;
+      }
+    }
+    button#ES.enabled {
+      pointer-events: none;
+      background-color: rgba($color: #249444, $alpha: .3);
+      color: rgba($color: #FFFFFF, $alpha: .4);
+      border-color: rgba($color: #249444, $alpha: .4);
+    }
+    button#DS {
+      background-color: #EE7C1B;
+      border-color: #db6c0d;
+      color: white;
+      
+      &:hover {
+        background-color: #db6c0d;
+      }
+    }
+    button#DS.disabled {
+      pointer-events: none;
+      background-color: rgba($color: #EE7C1B, $alpha: .3);
+      color: rgba($color: #FFFFFF, $alpha: .4);
+      border-color: rgba($color: #db6c0d, $alpha: .4);
+    }
+  }
+  #timer-sound {
+    position: absolute;
+    left: -99999px;
+  }
+}
+
+// tooltip for the reset button
+:root {
+  --scale: 0;
+  --arrow-size: 10px;
+  --tooltip-color: #000000;
+}
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+#reset-btn[disabled] {
+  position: relative;
+  margin: 0;
+}
+#reset-btn[disabled]::before, #reset-btn[disabled]::after {
+  position: absolute;
+  top: -.25rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+          transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center;
+  -webkit-transition: 100ms -webkit-transform ease-in-out;
+  transition: 100ms -webkit-transform ease-in-out;
+  transition: 100ms transform ease-in-out;
+  transition: 100ms transform ease-in-out, 100ms -webkit-transform ease-in-out;
+}
+#reset-btn[disabled]::before {
+  --translate-y: calc(-100% - var(--arrow-size));
+  content: attr(data-tooltip);
+  color: white;
+  padding: .5rem;
+  border-radius: .3rem;
+  text-align: center;
+  font-size: .90rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 100%;
+  background: var(--tooltip-color);
+  line-height: 1.2;
+}
+#reset-btn[disabled]:hover::before, #reset-btn[disabled]:hover::after {
+  --scale: 1;
+}
+#reset-btn[disabled]::after {
+  --translate-y: calc(-1 * var(--arrow-size));
+  content: '';
+  border: var(--arrow-size) solid transparent;
+  border-top-color: var(--tooltip-color);
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+}

@@ -1,0 +1,161 @@
+.countdown-timer-container {
+  background-color: #ffeeed;
+  border: 1px solid #eb4034;
+  padding: 30px 15px;
+  text-align: center;
+}
+
+.countdown-timer-container h2 {
+  font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+  margin: 0 0 60px;
+  font-size: 5em;
+}
+
+@media (min-width: 768px) {
+  .countdown-timer-container h2 {
+    font-size: 10em;
+  }
+}
+
+.countdown-timer-container h2 time#timer {
+  color: #249444;
+}
+
+.countdown-timer-container h2 time#timer.time-over {
+  color: red;
+}
+
+.countdown-timer-container .button-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.countdown-timer-container .button-container button {
+  font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+  background-color: #E14D43;
+  border: 1px solid #eb4034;
+  color: white;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 10px 5px;
+  border-radius: 25px;
+  -webkit-transition: background-color .4s ease-in-out;
+  transition: background-color .4s ease-in-out;
+}
+
+.countdown-timer-container .button-container button#reset-btn[disabled] {
+  background-color: rgba(225, 77, 67, 0.3);
+  color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(235, 64, 52, 0.4);
+  cursor: default;
+}
+
+.countdown-timer-container .button-container button#reset-btn[disabled]:hover {
+  background-color: rgba(225, 77, 67, 0.3);
+}
+
+.countdown-timer-container .button-container button#reset-btn:hover {
+  background-color: #910d04;
+}
+
+.countdown-timer-container .button-container button#ES {
+  background-color: #7AD03A;
+  border-color: #249444;
+}
+
+.countdown-timer-container .button-container button#ES:hover {
+  background-color: #249444;
+}
+
+.countdown-timer-container .button-container button#ES.enabled {
+  pointer-events: none;
+  background-color: rgba(36, 148, 68, 0.3);
+  color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(36, 148, 68, 0.4);
+}
+
+.countdown-timer-container .button-container button#DS {
+  background-color: #EE7C1B;
+  border-color: #db6c0d;
+  color: white;
+}
+
+.countdown-timer-container .button-container button#DS:hover {
+  background-color: #db6c0d;
+}
+
+.countdown-timer-container .button-container button#DS.disabled {
+  pointer-events: none;
+  background-color: rgba(238, 124, 27, 0.3);
+  color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(219, 108, 13, 0.4);
+}
+
+.countdown-timer-container #timer-sound {
+  position: absolute;
+  left: -99999px;
+}
+
+:root {
+  --scale: 0;
+  --arrow-size: 10px;
+  --tooltip-color: #000000;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#reset-btn[disabled] {
+  position: relative;
+  margin: 0;
+}
+
+#reset-btn[disabled]::before, #reset-btn[disabled]::after {
+  position: absolute;
+  top: -.25rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+  transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+  -webkit-transform-origin: bottom center;
+  transform-origin: bottom center;
+  -webkit-transition: 100ms -webkit-transform ease-in-out;
+  transition: 100ms -webkit-transform ease-in-out;
+  transition: 100ms transform ease-in-out;
+  transition: 100ms transform ease-in-out, 100ms -webkit-transform ease-in-out;
+}
+
+#reset-btn[disabled]::before {
+  --translate-y: calc(-100% - var(--arrow-size));
+  content: attr(data-tooltip);
+  color: white;
+  padding: .5rem;
+  border-radius: .3rem;
+  text-align: center;
+  font-size: .90rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 100%;
+  background: var(--tooltip-color);
+  line-height: 1.2;
+}
+
+#reset-btn[disabled]:hover::before, #reset-btn[disabled]:hover::after {
+  --scale: 1;
+}
+
+#reset-btn[disabled]::after {
+  --translate-y: calc(-1 * var(--arrow-size));
+  content: '';
+  border: var(--arrow-size) solid transparent;
+  border-top-color: var(--tooltip-color);
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+}
+/*# sourceMappingURL=style.css.map */
